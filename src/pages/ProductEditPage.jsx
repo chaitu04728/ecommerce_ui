@@ -12,6 +12,7 @@ const ProductEditPage = () => {
   const [loadingUpdate, setLoadingUpdate] = useState(false);
   const [errorProduct, setErrorProduct] = useState(null);
   const [errorUpdate, setErrorUpdate] = useState(null);
+  const apiUrl = process.env.REACT_BE_URI;
 
   const { userInfo } = useUser();
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ const ProductEditPage = () => {
           },
         };
         const { data } = await axios.get(
-          `http://localhost:5000/api/products/${productId}`,
+          `${apiUrl}/api/products/${productId}`,
           config
         );
         setProduct(data);
@@ -75,7 +76,7 @@ const ProductEditPage = () => {
 
       // Make PUT request to your backend to update a product
       const { data } = await axios.put(
-        `http://localhost:5000/api/products/${productId}`,
+        `${apiUrl}/api/products/${productId}`,
         formData,
         config
       );

@@ -8,6 +8,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const apiUrl = process.env.REACT_BE_URI;
 
   const navigate = useNavigate();
   const { login } = useUser();
@@ -26,7 +27,7 @@ const LoginPage = () => {
 
       // Send login request to your backend
       const { data } = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        `${apiUrl}/api/auth/login`,
         { email, password },
         config
       );

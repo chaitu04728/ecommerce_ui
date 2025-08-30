@@ -8,6 +8,7 @@ import { useUser } from "../Context/UserContext";
 const ProductCreatePage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const apiUrl = process.env.REACT_BE_URI;
 
   const { userInfo } = useUser();
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ const ProductCreatePage = () => {
 
       // Make POST request to your backend to create a product
       const { data } = await axios.post(
-        "http://localhost:5000/api/products",
+        `${apiUrl}/api/products`,
         formData,
         config
       );

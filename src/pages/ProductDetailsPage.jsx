@@ -9,6 +9,7 @@ const ProductDetailsPage = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const apiUrl = process.env.REACT_BE_URI;
 
   const { addToCart } = useCart();
 
@@ -23,9 +24,7 @@ const ProductDetailsPage = () => {
         setLoading(true);
         setError(null);
         // Make API call to your backend to get a single product by ID
-        const { data } = await axios.get(
-          `http://localhost:5000/api/products/${id}`
-        );
+        const { data } = await axios.get(`${apiUrl}/api/products/${id}`);
         setProduct(data);
         setLoading(false);
       } catch (err) {

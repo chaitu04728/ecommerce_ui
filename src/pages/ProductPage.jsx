@@ -10,12 +10,14 @@ const ProductsPage = () => {
 
   const { addToCart } = useCart();
 
+  const apiUrl = process.env.REACT_BE_URI;
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         setLoading(true);
         setError(null);
-        const { data } = await axios.get("http://localhost:5000/api/products");
+        const { data } = await axios.get(`${apiUrl}/products`);
         setProducts(data);
         setLoading(false);
       } catch (err) {

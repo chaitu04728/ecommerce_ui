@@ -9,6 +9,7 @@ const OrderDetailsPage = () => {
   const { id: orderId } = useParams(); // Get order ID from URL
   const navigate = useNavigate();
   const { userInfo } = useUser();
+  const apiUrl = process.env.REACT_BE_URI;
 
   const [order, setOrder] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -32,7 +33,7 @@ const OrderDetailsPage = () => {
           },
         };
         const { data } = await axios.get(
-          `http://localhost:5000/api/orders/${orderId}`,
+          `${apiUrl}/api/orders/${orderId}`,
           config
         );
         setOrder(data);

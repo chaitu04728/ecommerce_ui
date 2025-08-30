@@ -10,6 +10,7 @@ const RegisterPage = () => {
   const [message, setMessage] = useState(null); // For success or error messages
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const apiUrl = process.env.REACT_BE_URI;
 
   const navigate = useNavigate(); // Hook to navigate programmatically
 
@@ -33,7 +34,7 @@ const RegisterPage = () => {
       };
 
       const { data } = await axios.post(
-        "http://localhost:5000/api/auth/register",
+        `${apiUrl}/api/auth/register`,
         { name, email, password },
         config
       );

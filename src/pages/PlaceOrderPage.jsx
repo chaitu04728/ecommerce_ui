@@ -10,6 +10,7 @@ const PlaceOrderPage = () => {
   const navigate = useNavigate();
   const { cartItems, clearCart } = useCart();
   const { userInfo } = useUser();
+  const apiUrl = process.env.REACT_BE_URI;
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -87,7 +88,7 @@ const PlaceOrderPage = () => {
       };
 
       const { data } = await axios.post(
-        "http://localhost:5000/api/orders",
+        `${apiUrl}/api/orders`,
         orderData,
         config
       );

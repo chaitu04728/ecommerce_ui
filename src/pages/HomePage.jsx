@@ -10,6 +10,7 @@ const HomePage = () => {
   const [error, setError] = useState(null);
 
   const { addToCart } = useCart(); // Get addToCart function
+  const apiUrl = process.env.REACT_BE_URI;
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -17,7 +18,7 @@ const HomePage = () => {
         setLoading(true);
         setError(null);
         // Fetch products, maybe limit for home page if your backend supports it
-        const { data } = await axios.get("http://localhost:5000/api/products");
+        const { data } = await axios.get(`${apiUrl}/api/products`);
         // For the home page, we'll just display a few (e.g., first 8)
         setProducts(data.slice(0, 8)); // Displaying only the first 8 for 'Latest Products'
         setLoading(false);

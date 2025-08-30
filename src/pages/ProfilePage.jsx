@@ -16,6 +16,7 @@ const ProfilePage = () => {
   // State for profile update API call
   const [loadingUpdate, setLoadingUpdate] = useState(false);
   const [errorUpdate, setErrorUpdate] = useState(null);
+  const apiUrl = process.env.REACT_BE_URI;
 
   // State for fetching user orders
   const [orders, setOrders] = useState([]);
@@ -48,7 +49,7 @@ const ProfilePage = () => {
           };
           // Make API call to your backend to get user's orders
           const { data } = await axios.get(
-            "http://localhost:5000/api/orders/myorders",
+            `${apiUrl}/api/orders/myorders`,
             config
           );
           setOrders(data);
@@ -90,7 +91,7 @@ const ProfilePage = () => {
 
       // Make API call to update user profile
       const { data } = await axios.put(
-        "http://localhost:5000/api/users/profile", // Backend endpoint for profile update
+        `${apiUrl}/api/users/profile`, // Backend endpoint for profile update
         { name, email, password }, // Send updated data (password is optional)
         config
       );
