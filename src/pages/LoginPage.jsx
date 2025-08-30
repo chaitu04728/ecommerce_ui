@@ -8,7 +8,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const apiUrl = process.env.REACT_BE_URI;
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   const navigate = useNavigate();
   const { login } = useUser();

@@ -10,7 +10,7 @@ const RegisterPage = () => {
   const [message, setMessage] = useState(null); // For success or error messages
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const apiUrl = process.env.REACT_BE_URI;
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   const navigate = useNavigate(); // Hook to navigate programmatically
 

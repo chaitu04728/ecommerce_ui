@@ -8,7 +8,7 @@ import { useUser } from "../Context/UserContext";
 const ProductCreatePage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const apiUrl = process.env.REACT_BE_URI;
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   const { userInfo } = useUser();
   const navigate = useNavigate();

@@ -9,7 +9,7 @@ const OrderDetailsPage = () => {
   const { id: orderId } = useParams(); // Get order ID from URL
   const navigate = useNavigate();
   const { userInfo } = useUser();
-  const apiUrl = process.env.REACT_BE_URI;
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   const [order, setOrder] = useState(null);
   const [loading, setLoading] = useState(true);

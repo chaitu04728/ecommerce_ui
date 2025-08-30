@@ -16,7 +16,7 @@ const ProfilePage = () => {
   // State for profile update API call
   const [loadingUpdate, setLoadingUpdate] = useState(false);
   const [errorUpdate, setErrorUpdate] = useState(null);
-  const apiUrl = process.env.REACT_BE_URI;
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   // State for fetching user orders
   const [orders, setOrders] = useState([]);

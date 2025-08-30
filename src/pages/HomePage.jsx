@@ -10,7 +10,7 @@ const HomePage = () => {
   const [error, setError] = useState(null);
 
   const { addToCart } = useCart(); // Get addToCart function
-  const apiUrl = process.env.REACT_BE_URI;
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchProducts = async () => {

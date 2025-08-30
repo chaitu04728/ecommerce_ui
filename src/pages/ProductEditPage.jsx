@@ -12,7 +12,7 @@ const ProductEditPage = () => {
   const [loadingUpdate, setLoadingUpdate] = useState(false);
   const [errorProduct, setErrorProduct] = useState(null);
   const [errorUpdate, setErrorUpdate] = useState(null);
-  const apiUrl = process.env.REACT_BE_URI;
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   const { userInfo } = useUser();
   const navigate = useNavigate();

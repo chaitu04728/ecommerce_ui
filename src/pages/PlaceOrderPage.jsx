@@ -10,7 +10,7 @@ const PlaceOrderPage = () => {
   const navigate = useNavigate();
   const { cartItems, clearCart } = useCart();
   const { userInfo } = useUser();
-  const apiUrl = process.env.REACT_BE_URI;
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);

@@ -10,14 +10,14 @@ const ProductsPage = () => {
 
   const { addToCart } = useCart();
 
-  const apiUrl = process.env.REACT_BE_URI;
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         setLoading(true);
         setError(null);
-        const { data } = await axios.get(`${apiUrl}/products`);
+        const { data } = await axios.get(`${apiUrl}/api/products`);
         setProducts(data);
         setLoading(false);
       } catch (err) {

@@ -12,7 +12,7 @@ const AdminProductsPage = () => {
 
   const { userInfo } = useUser();
   const navigate = useNavigate();
-  const apiUrl = process.env.REACT_BE_URI;
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   // Redirect if not logged in or not admin
   useEffect(() => {
