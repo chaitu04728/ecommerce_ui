@@ -1,24 +1,32 @@
+# 1️⃣ Build stage
 FROM node:alpine3.18 as build
 
-# Declare build time environment variables
+# Build-time environment variables
 ARG VITE_APP_NODE_ENV
 ARG VITE_API_URL
 
-# Set default values for environment variables
+# Set environment variables
 ENV VITE_APP_NODE_ENV=$VITE_APP_NODE_ENV
 ENV VITE_API_URL=$VITE_API_URL
 
-# Build App
+# Build app
 WORKDIR /app
-COPY package.json .
+COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
 RUN npm run build
 
-# Serve with Nginx
+# 2️⃣ Serve with Nginx
 FROM nginx:1.23-alpine
-WORKDIR /usr/share/nginx/html
-RUN rm -rf *
-COPY  --from=build /app/dist .
-EXPOSE 80
-ENTRYPOINT [ "nginx", "-g", "daemon off;" ]
+
+# Remove default content
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copy built frontend
+COPY --from=build /app/dist /usr/share/nginx/html
+
+# Copy custom Nginx config
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+EXPOSE 80 443
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
