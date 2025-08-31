@@ -1,7 +1,7 @@
 # 1️⃣ Build stage
-FROM node:alpine3.18 AS build
+FROM node:18-alpine as build
 
-# Build-time environment variables
+# Build-time arguments
 ARG VITE_APP_NODE_ENV
 ARG VITE_API_URL
 
@@ -9,20 +9,26 @@ ARG VITE_API_URL
 ENV VITE_APP_NODE_ENV=$VITE_APP_NODE_ENV
 ENV VITE_API_URL=$VITE_API_URL
 
-# Build app
+# Set working directory
 WORKDIR /app
-COPY package.json package-lock.json ./
+
+# Install dependencies
+COPY package*.json ./
 RUN npm install
+
+# Copy source code
 COPY . .
+
+# Build React/Vite app
 RUN npm run build
 
-# 2️⃣ Serve with Nginx
-FROM nginx:1.23-alpine
+# 2️⃣ Final stage (just keeps dist/, no Nginx)
+FROM alpine:3.18
 
-# Remove default content
-RUN rm -rf /usr/share/nginx/html/*
+WORKDIR /dist
 
-# Copy built frontend
-COPY --from=build /app/dist /usr/share/nginx/html
-EXPOSE 80 443
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+# Copy built files only
+COPY --from=build /app/dist ./
+
+# Default command (useful if you exec inside)
+CMD ["ls", "-la"]
