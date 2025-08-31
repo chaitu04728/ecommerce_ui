@@ -34,7 +34,7 @@ const AdminProductsPage = () => {
           Authorization: `Bearer ${userInfo.token}`,
         },
       };
-      const { data } = await axios.get(`${apiUrl}/api/products/admin`, config); // Assuming this is also protected
+      const { data } = await axios.get(`${apiUrl}/products/admin`, config); // Assuming this is also protected
       setProducts(data);
       setLoading(false);
     } catch (err) {
@@ -66,7 +66,7 @@ const AdminProductsPage = () => {
           },
         };
 
-        await axios.delete(`${apiUrl}/api/products/${id}`, config);
+        await axios.delete(`${apiUrl}/products/${id}`, config);
 
         setDeleteSuccess((prev) => !prev); // Toggle to trigger re-fetch
         alert("Product deleted successfully!");

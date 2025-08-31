@@ -33,11 +33,7 @@ const ProductCreatePage = () => {
       };
 
       // Make POST request to your backend to create a product
-      const { data } = await axios.post(
-        `${apiUrl}/api/products`,
-        formData,
-        config
-      );
+      const { data } = await axios.post(`${apiUrl}/products`, formData, config);
 
       alert("Product created successfully!");
       setLoading(false);

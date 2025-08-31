@@ -32,10 +32,7 @@ const OrderDetailsPage = () => {
             Authorization: `Bearer ${userInfo.token}`,
           },
         };
-        const { data } = await axios.get(
-          `${apiUrl}/api/orders/${orderId}`,
-          config
-        );
+        const { data } = await axios.get(`${apiUrl}/orders/${orderId}`, config);
         setOrder(data);
         setLoading(false);
       } catch (err) {

@@ -48,10 +48,7 @@ const ProfilePage = () => {
             },
           };
           // Make API call to your backend to get user's orders
-          const { data } = await axios.get(
-            `${apiUrl}/api/orders/myorders`,
-            config
-          );
+          const { data } = await axios.get(`${apiUrl}/orders/myorders`, config);
           setOrders(data);
           setLoadingOrders(false);
         } catch (err) {
@@ -91,7 +88,7 @@ const ProfilePage = () => {
 
       // Make API call to update user profile
       const { data } = await axios.put(
-        `${apiUrl}/api/users/profile`, // Backend endpoint for profile update
+        `${apiUrl}/users/profile`, // Backend endpoint for profile update
         { name, email, password }, // Send updated data (password is optional)
         config
       );

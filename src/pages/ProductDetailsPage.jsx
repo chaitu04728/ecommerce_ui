@@ -24,7 +24,7 @@ const ProductDetailsPage = () => {
         setLoading(true);
         setError(null);
         // Make API call to your backend to get a single product by ID
-        const { data } = await axios.get(`${apiUrl}/api/products/${id}`);
+        const { data } = await axios.get(`${apiUrl}/products/${id}`);
         setProduct(data);
         setLoading(false);
       } catch (err) {

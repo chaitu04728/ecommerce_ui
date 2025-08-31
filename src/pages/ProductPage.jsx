@@ -17,7 +17,7 @@ const ProductsPage = () => {
       try {
         setLoading(true);
         setError(null);
-        const { data } = await axios.get(`${apiUrl}/api/products`);
+        const { data } = await axios.get(`${apiUrl}/products`);
         setProducts(data);
         setLoading(false);
       } catch (err) {

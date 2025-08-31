@@ -38,7 +38,7 @@ const ProductEditPage = () => {
           },
         };
         const { data } = await axios.get(
-          `${apiUrl}/api/products/${productId}`,
+          `${apiUrl}/products/${productId}`,
           config
         );
         setProduct(data);
@@ -76,7 +76,7 @@ const ProductEditPage = () => {
 
       // Make PUT request to your backend to update a product
       const { data } = await axios.put(
-        `${apiUrl}/api/products/${productId}`,
+        `${apiUrl}/products/${productId}`,
         formData,
         config
       );

@@ -34,7 +34,7 @@ const RegisterPage = () => {
       };
 
       const { data } = await axios.post(
-        `${apiUrl}/api/auth/register`,
+        `${apiUrl}/auth/register`,
         { name, email, password },
         config
       );

@@ -27,7 +27,7 @@ const LoginPage = () => {
 
       // Send login request to your backend
       const { data } = await axios.post(
-        `${apiUrl}/api/auth/login`,
+        `${apiUrl}/auth/login`,
         { email, password },
         config
       );

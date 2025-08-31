@@ -87,11 +87,7 @@ const PlaceOrderPage = () => {
         totalPrice,
       };
 
-      const { data } = await axios.post(
-        `${apiUrl}/api/orders`,
-        orderData,
-        config
-      );
+      const { data } = await axios.post(`${apiUrl}/orders`, orderData, config);
 
       setOrderPlaced(true); // <-- NEW: Set flag immediately after successful API call
       alert("Order placed successfully!");
