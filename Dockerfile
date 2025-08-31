@@ -1,5 +1,5 @@
 # 1️⃣ Build stage
-FROM node:alpine3.18 as build
+FROM node:alpine3.18 AS build
 
 # Build-time environment variables
 ARG VITE_APP_NODE_ENV
@@ -24,9 +24,5 @@ RUN rm -rf /usr/share/nginx/html/*
 
 # Copy built frontend
 COPY --from=build /app/dist /usr/share/nginx/html
-
-# Copy custom Nginx config
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
 EXPOSE 80 443
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
